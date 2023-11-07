@@ -2,6 +2,7 @@ import {getAuth,createUserWithEmailAndPassword} from "firebase/auth";
 import {app} from "./firebase";
 import './App.css';
 import SignupPage from "./page/Signup";
+import SigninPage from "./page/Signin"
 
 const auth=getAuth(app);
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
         <h1>Firebase react app</h1>
         <SignupPage/>
+        <SigninPage/>
     </div>
   );
 }
