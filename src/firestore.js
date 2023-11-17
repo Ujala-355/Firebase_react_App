@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, doc, getDoc, query,where,getDocs} from "firebase/firestore";
 import { app } from "./firebase";
 
 const firestore = getFirestore(app);
@@ -31,13 +31,22 @@ const FireStore = () => {
       console.log('Document does not exist');
     }
   };
-
+  const getDocumentsByQuesry=async()=>{
+    const collectionRef=collection(firestore,"information");
+    const q=query(collectionRef, where('gender',"==","female"));
+    const snapshot=await getDocs(q);
+    snapshot.forEach((doc)=>
+        console.log(doc.id,"=>",doc.data()));
+        console.log("hello")
+  };
   return (
     <>
       <h1>FireStore</h1>
       <button onClick={writeData}>Put Data</button>
       <button onClick={makeSubCollection}>Put SubData</button>
       <button onClick={getDocument}>Get Document</button>
+      <button onClick={getDocumentsByQuesry}>Get Document by Query</button>
+
     </>
   );
 };
