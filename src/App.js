@@ -44,11 +44,11 @@ import {useFirebase} from "./page/context/Firebase";
 import "./App.css"
 const App=()=>{
     const firebase=useFirebase();
-    console.log(firebase)
+    // console.log(firebase)
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const putDataNew=()=>{
-        firebase.putData('root/class10/class11',{id:12});
+        firebase.putData('root/class10/class11',{id:12,"name":"ujala"});
     }
     return(
         <>
