@@ -1,43 +1,43 @@
-import {useEffect,useState} from "react";
-import {getAuth,onAuthStateChanged,signOut} from "firebase/auth";
-import {app} from "./firebase";
-import './App.css';
-import SignupPage from "./page/Signup";
-import SigninPage from "./page/Signin"
+// import {useEffect,useState} from "react";
+// import {getAuth,onAuthStateChanged,signOut} from "firebase/auth";
+// import {app} from "./firebase";
+// import './App.css';
+// import SignupPage from "./page/Signup";
+// import SigninPage from "./page/Signin"
 
-const auth=getAuth(app);
-function App() {
-    const [user,setUser]=useState(null);
-    useEffect(()=>{
-        onAuthStateChanged(auth,(user)=>{
-            if(user){
-                console.log("hello",user);
-                setUser(user);
-            }
-            else{
-                console.log('You are logged out')
-                setUser(null);
-            }
-        })
-    },[]);
-    if (user===null){
-        return(
-            <>
-                <SignupPage/>
-                <SigninPage/>
-            </>
-        )
-    }
-  return (
-    <div className="App">
-        <h1>you are already login</h1>
-        <h1>{useEffect.email}</h1>
-        <button onClick={()=>signOut(auth)}>Logout</button>
+// const auth=getAuth(app);
+// function App() {
+//     const [user,setUser]=useState(null);
+//     useEffect(()=>{
+//         onAuthStateChanged(auth,(user)=>{
+//             if(user){
+//                 console.log("hello",user);
+//                 setUser(user);
+//             }
+//             else{
+//                 console.log('You are logged out')
+//                 setUser(null);
+//             }
+//         })
+//     },[]);
+//     if (user===null){
+//         return(
+//             <>
+//                 <SignupPage/>
+//                 <SigninPage/>
+//             </>
+//         )
+//     }
+//   return (
+//     <div className="App">
+//         <h1>you are already login</h1>
+//         <h1>{useEffect.email}</h1>
+//         <button onClick={()=>signOut(auth)}>Logout</button>
         
-    </div>
-  );
-}
-export default App;
+//     </div>
+//   );
+// }
+// export default App;
 
 // import React, { useState } from 'react';
 // import {useFirebase} from "./page/context/Firebase";
@@ -80,3 +80,13 @@ export default App;
 // export default App;
 
 
+// fireStore
+import FireStore from "./firestore"
+const App=()=>{
+    return(
+        <>
+            <FireStore/>
+        </>
+    )
+}
+export default App;
