@@ -1,5 +1,5 @@
 import {useEffect,useState} from "react";
-import {getAuth,onAuthStateChanged} from "firebase/auth";
+import {getAuth,onAuthStateChanged,signOut} from "firebase/auth";
 import {app} from "./firebase";
 import './App.css';
 import SignupPage from "./page/Signup";
@@ -19,12 +19,21 @@ function App() {
                 setUser(null);
             }
         })
-    },[])
+    },[]);
+    if (user===null){
+        return(
+            <>
+                <SignupPage/>
+                <SigninPage/>
+            </>
+        )
+    }
   return (
     <div className="App">
-        <h1>Firebase react app</h1>
-        <SignupPage/>
-        <SigninPage/>
+        <h1>you are already login</h1>
+        <h1>{useEffect.email}</h1>
+        <button onClick={()=>signOut(auth)}>Logout</button>
+        
     </div>
   );
 }
