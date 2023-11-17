@@ -39,54 +39,57 @@
 // }
 // export default App;
 
-// import React, { useState } from 'react';
-// import {useFirebase} from "./page/context/Firebase";
-// import "./App.css"
-// const App=()=>{
-//     const firebase=useFirebase();
-//     console.log(firebase)
-//     const [email,setEmail]=useState('');
-//     const [password,setPassword]=useState('');
-    
-//     return(
-//         <>
-//             <div className="App">
-//                 <h1>Firebase</h1>
-//                 <input 
-//                     type="email" 
-//                     placeholder="Enter Email" 
-//                     onChange={(e)=>setEmail(e.target.value)}
-//                     value={email}
-//                 />
-//                 <input 
-//                     type="password" 
-//                     placeholder="Enter passsword" 
-//                     onChange={(e)=>setPassword(e.target.value)}
-//                     value={password}
-//                 />
-//                 <button>Signin with Google</button>
-//                 <button 
-//                     onClick={()=>{firebase.signupUserWithEmailAndPassword(email,password);
-//                     firebase.putData("users/"+"vikas",{email,password});
-//                 }}
-
-              
-//                 >
-//                 Signup</button>
-//             </div>
-//         </>
-//     )
-// }
-// export default App;
-
-
-// fireStore
-import FireStore from "./firestore"
+import React, { useState } from 'react';
+import {useFirebase} from "./page/context/Firebase";
+import "./App.css"
 const App=()=>{
+    const firebase=useFirebase();
+    console.log(firebase)
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    const putDataNew=()=>{
+        firebase.putData('root/class10/class11',{id:12});
+    }
     return(
         <>
-            <FireStore/>
+            <div className="App">
+                <h1>Firebase</h1>
+                <input 
+                    type="email" 
+                    placeholder="Enter Email" 
+                    onChange={(e)=>setEmail(e.target.value)}
+                    value={email}
+                />
+                <input 
+                    type="password" 
+                    placeholder="Enter passsword" 
+                    onChange={(e)=>setPassword(e.target.value)}
+                    value={password}
+                />
+                <button>Signin with Google</button>
+                <button 
+                    onClick={()=>{firebase.signupUserWithEmailAndPassword(email,password);
+                    firebase.putData("users/"+"vikas",{email,password});
+                }}
+
+              
+                >
+                Signup</button>
+                <button onClick={putDataNew}>Trigger</button>
+            </div>
         </>
     )
 }
 export default App;
+
+
+// fireStore
+// import FireStore from "./firestore"
+// const App=()=>{
+//     return(
+//         <>
+//             <FireStore/>
+//         </>
+//     )
+// }
+// export default App;
